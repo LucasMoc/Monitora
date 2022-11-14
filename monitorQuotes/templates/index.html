@@ -1,0 +1,55 @@
+{%extends 'base.html'%} {% load static %} {% load humanize %} {%block content%}
+
+<div class="card-body">
+  <div class="col-8 m-auto pt-3 pb-2 text-center">
+    <form method="get">
+      <input
+        type="text"
+        id="search"
+        name="search"
+        class="form-control"
+        placeholder="Buscar por código da empresa ou nome da empresa..."
+      />
+    </form>
+  </div>
+  <div class="contentTable">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Ativo</th>
+          <th scope="col">Empresa</th>
+          <th scope="col">Setor Econômico</th>
+          <th scope="col">Valor</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for empresa in listaAtivos%}
+        <tr>
+          <th scope="row">
+            <img
+              style="width: 56px; height: 56px"
+              src="{{empresa.logo}}"
+              alt="My image"
+            />
+          </th>
+          <th scope="row">{{empresa.stock}}</th>
+          <td>{{empresa.name}}</td>
+          <td class="d-none d-md-table-cell">{{empresa.sector}}</td>
+          <td>R$ {{empresa.close|floatformat:2|intcomma}}</td>
+          <td>
+            <a
+              class="btn btn-primary"
+              href="{% url 'addWstock_stock' empresa.stock%}"
+            >
+              Minitorar
+            </a>
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+  {% endblock content %}
+</div>

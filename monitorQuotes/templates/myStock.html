@@ -1,0 +1,40 @@
+{%extends 'base.html'%} {% load static %} {% load humanize %} {%block content%}
+
+<div class="card-body">
+  <div class="contentTable">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Ativo</th>
+          <th scope="col">Valor maximo</th>
+          <th scope="col">Valor minimo</th>
+          <th scope="col">Tempo de checagem</th>
+          <th scope="col">Email</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for stocks in listStocks%}
+        <tr>
+          <th>{{stocks.id}}</th>
+          <th>{{stocks.stock}}</th>
+          <td>R$ {{stocks.value_max|intcomma}}</td>
+          <td>R$ {{stocks.value_min|intcomma}}</td>
+          <td>{{stocks.moniTime}}</td>
+          <td>{{stocks.email}}</td>
+          <td>
+            <a class="btn btn-warning" href="{% url 'update_stock' stocks.pk%}">
+              Editar
+            </a>
+            <a class="btn btn-danger" href="{% url 'delete_stock' stocks.pk%}">
+              Excluir
+            </a>
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+  {% endblock content %}
+</div>

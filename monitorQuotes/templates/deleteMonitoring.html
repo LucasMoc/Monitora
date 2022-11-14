@@ -1,0 +1,19 @@
+{% extends 'index.html' %} {% load bootstrap4 %} {%block content%}
+<div class="container d-flex card shadow-sm mt-3">
+  <h1 class="card-header">Deletar</h1>
+  <div class="card-body">
+    <form method="post">
+      {% csrf_token %}
+      <p>
+        Tem certeza que deseja deletar o monitoramento da ação "{{ object }}"
+        {%buttons%}
+        <button class="btn btn-primary" type="submit">Sim</button>
+        <button class="btn btn-warning" type="button">
+          <a href="{% url 'myStock' %}">Não</a>
+        </button>
+        {%endbuttons%}
+      </p>
+    </form>
+  </div>
+</div>
+{%endblock%}

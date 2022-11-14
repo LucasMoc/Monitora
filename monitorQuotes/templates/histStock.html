@@ -1,0 +1,29 @@
+{%extends 'base.html'%} {% load static %} {% load humanize %} {%block content%}
+
+<div class="card-body">
+  <div class="contentTable">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Ativo</th>
+          <th scope="col">Valor Ativo</th>
+          <th scope="col">Data do disparo</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for stocks in histStocks%}
+        <tr>
+          <th>{{stocks.id}}</th>
+          <th>{{stocks.stock}}</th>
+          <td>R$ {{stocks.value|floatformat:2|intcomma}}</td>
+          <td>{{stocks.date|naturalday}}</td>
+          <td>{{stocks.email}}</td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+  {% endblock content %}
+</div>

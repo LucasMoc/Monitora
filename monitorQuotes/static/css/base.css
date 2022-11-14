@@ -1,0 +1,26 @@
+*,
+body {
+  margin: 0px;
+  border: 0px;
+}
+
+body {
+  background: #c3c3c3;
+}
+
+.contentBody {
+  height: 100%;
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  background: #c3c3c3;
+}
+
+.contentBlock {
+  height: 41rem;
+  background: #f8f9fa;
+  width: 100%;
+  overflow: auto;
+}
